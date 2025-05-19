@@ -1,0 +1,2 @@
+class Spike extends Block {
+}

@@ -1,0 +1,2 @@
+class BasicBlock extends Block {
+}

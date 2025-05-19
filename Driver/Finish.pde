@@ -1,0 +1,2 @@
+class Finish extends Block{
+}
