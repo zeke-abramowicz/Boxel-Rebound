@@ -1,7 +1,7 @@
 abstract class Block {
   public float posX;
   public float posY;
-  private static final float squareSize = 30.0;
+  public static final float squareSize = 30.0;
   void position(){
   }
   
@@ -13,6 +13,7 @@ abstract class Block {
   float getSquareSize(){
     return squareSize;
   }
+  
   
   
   
