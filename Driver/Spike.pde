@@ -9,4 +9,11 @@ class Spike extends Block {
         float squareSize2 = getSquareSize();
         triangle(posX - squareSize2 / 2, posY + squareSize2 / 2, posX + squareSize2 / 2, posY + squareSize2 / 2, posX, posY - squareSize2 / 2);
   }
+  
+  void deleteBlock(){
+    float squareSize2 = getSquareSize();
+    fill(120, 140, 250);
+    stroke(120, 140, 250);
+    triangle(posX - squareSize2 / 2, posY + squareSize2 / 2, posX + squareSize2 / 2, posY + squareSize2 / 2, posX, posY - squareSize2 / 2);
+  }
 }

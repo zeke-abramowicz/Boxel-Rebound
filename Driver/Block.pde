@@ -14,7 +14,12 @@ abstract class Block {
     return squareSize;
   }
   
+  void deleteBlock(){
+    return;
+  }
   
-  
+  void createBlock(){
+    return;
+  }
   
 }
