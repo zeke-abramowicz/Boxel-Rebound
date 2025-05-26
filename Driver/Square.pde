@@ -1,33 +1,69 @@
 class Square {
   int size;
   int jumpPower;
-  PVector forces;
-  PVector playerLocation, gravity;
-  boolean touchedGround;
+  PVector playerLocation, velocity, acceleration;
+  boolean touchingGround;
+
+  PVector gravity = new PVector (0.0, 0.5);
 
   public Square(int size, PVector location, int jump){
-    touchedGround=true;
-    forces = new PVector(0.0,0.0);
-    gravity = new PVector(0.0,1.0);
+    touchingGround=true;
+    velocity = new PVector(0.0,0.0);
+    acceleration = new PVector(0.0,0.0);
     this.size = size;
     playerLocation = location;
     jumpPower = jump;
   }
   
   public void move(){
-    playerLocation.add(forces);
-    playerLocation.add(gravity);
+    applyForce(gravity);
+    velocity.add(acceleration);
+    playerLocation.add(velocity);
+    reset();
+    velocity.limit(30);
   }
   
   public void jump(){
-    if (touchedGround){
-    playerLocation.add(new PVector(0,jumpPower));
+    if (touchingGround){
+    velocity.add(new PVector(0,-jumpPower));
+    touchingGround=false;
     }
   }
   
-  public boolean touchingBlock(){
-    
+  public void applyForce(PVector force){
+    acceleration.add(force);
+  }
+   
+  public void reset(){
+    acceleration = new PVector(0.0,0.0);
   }
   
   
+  public boolean blockDown(){
+    
+    
+    return false;
+  }
+  
+  public PVector getLocation(){
+    return playerLocation;
+  }
+  public void setLocation(PVector newP){
+    playerLocation = newP;
+  }
+  public int getSize(){
+    return size;
+  }
+  
+  void SquareHere(Level curLev){
+    //cycle through level, check the position data of each block
+    //getLevel is in Level
+    ArrayList currentLevel = curLev.getLevel();
+    for (int i =0; i< currentLevel.size();i++){
+      if (playerLocation.y+size==currentLevel.get(i).posY&&playerLocation.x==currentLevel.get(i).posX){
+      //posY and posX are public in Level
+        
+      }
+    }
+  }
 }
