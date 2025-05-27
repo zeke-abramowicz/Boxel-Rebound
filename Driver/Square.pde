@@ -55,15 +55,19 @@ class Square {
     return size;
   }
   
+  /**
   void SquareHere(Level curLev){
     //cycle through level, check the position data of each block
     //getLevel is in Level
     ArrayList currentLevel = curLev.getLevel();
     for (int i =0; i< currentLevel.size();i++){
-      if (playerLocation.y+size==currentLevel.get(i).posY&&playerLocation.x==currentLevel.get(i).posX){
+      if (playerLocation.y+size==currentLevel.get(i).posY&&playerLocation.x>=currentLevel.get(i).posX&&playerLocation.x<=currentLevel.get(i).posX+size){
       //posY and posX are public in Level
-        
+        reset();
+        playerLocation = new PVector (playerLocation.x, currentLevel.get(i).posY);
+        touchingGround = true;
       }
     }
   }
+  **/
 }

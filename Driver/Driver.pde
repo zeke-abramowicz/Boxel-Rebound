@@ -19,7 +19,12 @@ void draw() {
   fill(0,255,0);
   background(0);
   rect(josh.getLocation().x,josh.getLocation().y,josh.getSize(),josh.getSize());
-  josh.move();
+  if(josh.getLocation().y+josh.size >= 795.0){
+  josh.reset();
+  josh.setLocation(new PVector(50, 800-josh.size));
+  }else{
+    josh.move();
+  }
 }
 
 void keyPressed(){
