@@ -21,9 +21,11 @@ void forces(){
 }
 
 void draw() {
+
   if (levels.editMode == true && frameCount % 4 == 0){
     levels.editMode();
   }
+  else levels.createLevel();
 }
 
 
@@ -31,4 +33,8 @@ void keyPressed(){
 }
 
 void setLevel() {
+}
+
+void reset() {
+  setup();
 }

@@ -10,14 +10,20 @@ class Finish extends Block{
       for (float col = posY - squareSize2 / 2; col < posY + squareSize2 / 2; col += squareSize2/ 10){
         if((col + row) / (squareSize2 / 10)  % 2 == 1){
           fill(250,250,250);
+          /*
           if (row != posX + squareSize2 / 2 - 1 && col != posY + squareSize2 / 2 - 1 && (col != posY - squareSize2 / 2 || row != posX - squareSize2 / 2)) stroke(0);
           else noStroke();
+          */
+          stroke(0);
           rect(row, col, squareSize2 / 10, squareSize2 / 10);
         }
         else {
           fill(0, 0, 0);
+          /*
           if (row != posX + squareSize2 / 2 - 1 && col != posY + squareSize2 / 2 - 1 && (col != posY - squareSize2 / 2 || row != posX - squareSize2 / 2)) stroke(0);
           else noStroke();
+          */
+          stroke(0);
           rect(row, col, squareSize2 / 10, squareSize2 / 10);
         }
       }

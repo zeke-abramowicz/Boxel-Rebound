@@ -25,7 +25,11 @@ class Level {
         size++;
       }
       if (key == '3'){
-        myLevel.add(new Finish((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize + Block.squareSize / 2));
+        myLevel.add(new Finish((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2
+        , 
+        (int)(mouseY / Block.squareSize) * Block.squareSize 
+        + Block.squareSize / 2
+        ));
         size++;
       }
       if (key == '4'){
@@ -50,16 +54,18 @@ class Level {
   }
   }
   void moveRight(){
+            background(120, 140, 250);
     for (int i = size - 1; i >= 0; i--){
-      myLevel.get(i).deleteBlock();
+      //myLevel.get(i).deleteBlock();
       myLevel.get(i).posX += 10;
       myLevel.get(i).createBlock();
     }
   }
   
   void moveLeft(){
+            background(120, 140, 250);
     for (int i = 0; i < size; i++){
-      myLevel.get(i).deleteBlock();
+      //myLevel.get(i).deleteBlock();
       myLevel.get(i).posX -= 10;
       myLevel.get(i).createBlock();
     }
