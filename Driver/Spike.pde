@@ -16,4 +16,8 @@ class Spike extends Block {
     stroke(120, 140, 250);
     triangle(posX - squareSize2 / 2, posY + squareSize2 / 2, posX + squareSize2 / 2, posY + squareSize2 / 2, posX, posY - squareSize2 / 2);
   }
+  
+  String toString(){
+    return "3" + posX + " " + posY; 
+  }
 }

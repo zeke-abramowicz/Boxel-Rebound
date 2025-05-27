@@ -29,4 +29,8 @@ class Finish extends Block{
     stroke(120, 140, 250);
     rect(posX - getSquareSize() / 2, posY - getSquareSize() / 2, getSquareSize(), getSquareSize());
   }
+  
+  String toString(){
+    return "2" + posX + " " + posY;
+  }
 }

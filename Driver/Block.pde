@@ -22,4 +22,8 @@ abstract class Block {
     return;
   }
   
+  String toString(){
+    return "";
+  }
+  
 }

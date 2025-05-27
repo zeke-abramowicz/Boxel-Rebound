@@ -14,6 +14,10 @@ class BasicBlock extends Block {
     stroke(120, 140, 250);
     rect(posX, posY, getSquareSize(), getSquareSize());
   }
+  
+  String toString(){
+    return "1" + posX + " " + posY;
+  }
 
   
 }

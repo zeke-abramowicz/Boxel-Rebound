@@ -8,6 +8,12 @@ class Level {
     size = myLevel.size();
   }
   
+  Level(String str){
+    myLevel = new ArrayList<Block>();
+    size = myLevel.size();
+    createLevel(str);
+  }
+  
   void addBlock(){
     if (keyPressed){
       if (key == '1'){
@@ -15,11 +21,11 @@ class Level {
         size++;
       }
       if (key == '2'){
-        myLevel.add(new Spike((int)(mouseX / Block.squareSize) * Block.squareSize, (int)(mouseY / Block.squareSize) * Block.squareSize));
+        myLevel.add(new Spike((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize + Block.squareSize / 2));
         size++;
       }
       if (key == '3'){
-        myLevel.add(new Finish((int)(mouseX / Block.squareSize) * Block.squareSize, (int)(mouseY / Block.squareSize) * Block.squareSize));
+        myLevel.add(new Finish((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize + Block.squareSize / 2));
         size++;
       }
       if (key == '4'){
@@ -44,7 +50,7 @@ class Level {
   }
   }
   void moveRight(){
-    for (int i = 0; i < size; i++){
+    for (int i = size - 1; i >= 0; i--){
       myLevel.get(i).deleteBlock();
       myLevel.get(i).posX += 10;
       myLevel.get(i).createBlock();
@@ -67,5 +73,37 @@ class Level {
     return size;
   }
   
+  String toString(){
+    String str = "";
+    for (int i = 0; i < size; i++){
+      str += myLevel.get(i).toString();
+      str += "|";
+    }
+    return str;
+  }
+  
+  void createLevel(String str){
+    String[] arr = str.split("|");
+    for (int i = 0; i < arr.length; i++){
+      String newStr = arr[i];
+      if (newStr.substring(0, 1).equals("1")){
+        String str2 = newStr.substring(1);
+        String[] arr2 = str2.split(" ");
+        myLevel.add(new BasicBlock(float(arr2[0]), float(arr2[1])));
+      }
+      if (newStr.substring(0, 1).equals("2")){
+        String str2 = newStr.substring(1);
+        String[] arr2 = str2.split(" ");
+        myLevel.add(new Finish(float(arr2[0]), float(arr2[1])));
+      }
+      if (newStr.substring(0, 1).equals("3")){
+        String str2 = newStr.substring(1);
+        String[] arr2 = str2.split(" ");
+        myLevel.add(new Spike(float(arr2[0]), float(arr2[1])));
+      }
+    }
+  }
+
+        
   
 }
