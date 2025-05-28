@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 class Level {
   private ArrayList<Block> myLevel;
   private int size;
@@ -88,28 +89,40 @@ class Level {
     return str;
   }
   
+  
   void createLevel(String str){
-    String[] arr = str.split("|");
+    String[] arr = split(str, '|');
     for (int i = 0; i < arr.length; i++){
       String newStr = arr[i];
+      println(newStr.substring(0, 1));
       if (newStr.substring(0, 1).equals("1")){
-        String str2 = newStr.substring(1);
-        String[] arr2 = str2.split(" ");
-        //println(arr2);
-        myLevel.add(new BasicBlock(float(arr2[0]), float(arr2[1])));
+        println(newStr);
+        println(newStr.substring(2));
+        String str2 = newStr.substring(2);
+        String[] arr2 = split(str2, ' ');
+        float x = float(arr2[0]);
+        float y = float(arr2[1]);
+        println(float(arr2[1]));
+        BasicBlock block = new BasicBlock(x, y);
+        //myLevel.add(block);
       }
-      if (newStr.substring(0, 1).equals("2")){
-        String str2 = newStr.substring(1);
-        String[] arr2 = str2.split(" ");
-        myLevel.add(new Finish(float(arr2[0]), float(arr2[1])));
+      else if (newStr.substring(0, 1).equals("2")){
+        String str2 = newStr.substring(2);
+        String[] arr2 = split(str2, ' ');
+        Block block = new Finish(float(arr2[0]), float(arr2[1]));
+        myLevel.add(block);
       }
-      if (newStr.substring(0, 1).equals("3")){
-        String str2 = newStr.substring(1);
-        String[] arr2 = str2.split(" ");
-        myLevel.add(new Spike(float(arr2[0]), float(arr2[1])));
+      else if (newStr.substring(0, 1).equals("3")){
+        String str2 = newStr.substring(2);
+        String[] arr2 = split(str2, ' ');
+        Block block = new Spike(float(arr2[0]), float(arr2[1]));
+        myLevel.add(block);
       }
+      
     }
+    println(this.toString());
   }
+  
 
         
   

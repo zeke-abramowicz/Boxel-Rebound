@@ -6,7 +6,7 @@ Also, finish fixing up this driver and turning it away from a class and into jus
 */
   
 import java.util.ArrayList;
-
+import java.util.Arrays;
 LevelList levels = new LevelList();
 int currentLevel;
 
@@ -22,11 +22,13 @@ void forces(){
 
 void draw() {
 
-  if (levels.editMode == true && frameCount % 4 == 0){
-    levels.editMode();
+  if (levels.editMode == true){
+    if (frameCount % 4 == 0){
+          levels.editMode();
+    }
   }
-  else{
-    levels.runLevel();      
+  else if (levels.runMode == true){
+    //levels.runLevel();      
   }
 }
 
