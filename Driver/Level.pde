@@ -20,10 +20,12 @@ class Level {
       if (key == '1'){
         myLevel.add(new BasicBlock((int)(mouseX / Block.squareSize) * Block.squareSize, (int)(mouseY / Block.squareSize) * Block.squareSize));
         size++;
+        myLevel.get(size - 1).createBlock();
       }
       if (key == '2'){
         myLevel.add(new Spike((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize + Block.squareSize / 2));
         size++;
+        myLevel.get(size - 1).createBlock();
       }
       if (key == '3'){
         myLevel.add(new Finish((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2
@@ -32,6 +34,7 @@ class Level {
         + Block.squareSize / 2
         ));
         size++;
+        myLevel.get(size - 1).createBlock();
       }
       if (key == '4'){
         if (size > 0){
@@ -53,6 +56,7 @@ class Level {
         }
         
   }
+  
   }
   void moveRight(){
             background(120, 140, 250);
@@ -68,6 +72,15 @@ class Level {
     for (int i = 0; i < size; i++){
       //myLevel.get(i).deleteBlock();
       myLevel.get(i).posX -= 10;
+      myLevel.get(i).createBlock();
+    }
+  }
+  
+  void moveLeft(int x){
+                background(120, 140, 250);
+    for (int i = 0; i < size; i++){
+      //myLevel.get(i).deleteBlock();
+      myLevel.get(i).posX -= x;
       myLevel.get(i).createBlock();
     }
   }
@@ -104,19 +117,26 @@ class Level {
         float y = float(arr2[1]);
         println(float(arr2[1]));
         BasicBlock block = new BasicBlock(x, y);
-        //myLevel.add(block);
+        myLevel.add(block);
+        size++;
       }
       else if (newStr.substring(0, 1).equals("2")){
         String str2 = newStr.substring(2);
         String[] arr2 = split(str2, ' ');
-        Block block = new Finish(float(arr2[0]), float(arr2[1]));
+        float x = float(arr2[0]);
+        float y = float(arr2[1]);
+        Finish block = new Finish(x, y);
         myLevel.add(block);
+        size++;
       }
       else if (newStr.substring(0, 1).equals("3")){
         String str2 = newStr.substring(2);
         String[] arr2 = split(str2, ' ');
-        Block block = new Spike(float(arr2[0]), float(arr2[1]));
+        float x = float(arr2[0]);
+        float y = float(arr2[1]);
+        Spike block = new Spike(x, y);
         myLevel.add(block);
+        size++;
       }
       
     }

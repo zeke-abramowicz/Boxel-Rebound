@@ -1,7 +1,6 @@
 class Finish extends Block{
   Finish(float x, float y){
     super(x, y);
-    createBlock();
 }
 
   void createBlock(){

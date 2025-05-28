@@ -15,6 +15,7 @@ void setup(){
   background(120, 140, 250);
   size(500,800);
   currentLevel = 0;
+  levels.createLevel();
 }
 
 void forces(){
@@ -28,7 +29,7 @@ void draw() {
     }
   }
   else if (levels.runMode == true){
-    //levels.runLevel();      
+    levels.runLevel();      
   }
 }
 

@@ -1,7 +1,6 @@
 class Spike extends Block {
   Spike(float x, float y){
     super(x, y);
-    createBlock();
   }
   
   void createBlock(){

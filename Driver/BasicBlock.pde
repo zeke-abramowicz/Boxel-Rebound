@@ -1,16 +1,15 @@
 class BasicBlock extends Block {
   BasicBlock(float x, float y){
     super(x, y);
-    createBlock();
   }
   
   void createBlock(){
-    fill(128, 20, 128);
+    fill(128.0, 20.0, 128.0);
     rect(posX, posY, getSquareSize(), getSquareSize());
   }
   
   void deleteBlock(){
-    fill(120, 140, 250);
+    fill(120.0, 140.0, 250.0);
     stroke(120, 140, 250);
     rect(posX, posY, getSquareSize(), getSquareSize());
   }
