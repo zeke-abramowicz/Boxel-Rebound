@@ -37,6 +37,6 @@ class Finish extends Block{
   }
   
   String toString(){
-    return "2" + posX + " " + posY;
+    return "2" + " " + posX + " " + posY;
   }
 }

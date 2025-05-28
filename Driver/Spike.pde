@@ -19,6 +19,6 @@ class Spike extends Block {
   }
   
   String toString(){
-    return "3" + posX + " " + posY; 
+    return "3" + " " + posX + " " + posY; 
   }
 }

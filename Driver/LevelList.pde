@@ -34,8 +34,14 @@ class LevelList {
   void reset(){
   }
   
-  void createLevel(){
-    levelList[currentLevel];
+  void runLevel() {
+    for (int i = 0; i < levelList[currentLevel].getSize();i++){
+      levelList[currentLevel].getLevel().get(i).createBlock();
+    }
+    if (frameCount % 2 == 0){
+       levelList[currentLevel].moveLeft();
+
+
   }
-  
+    
 }

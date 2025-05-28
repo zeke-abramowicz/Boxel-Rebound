@@ -25,7 +25,9 @@ void draw() {
   if (levels.editMode == true && frameCount % 4 == 0){
     levels.editMode();
   }
-  else levels.createLevel();
+  else{
+    levels.runLevel();      
+  }
 }
 
 

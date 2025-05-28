@@ -16,7 +16,7 @@ class BasicBlock extends Block {
   }
   
   String toString(){
-    return "1" + posX + " " + posY;
+    return "1" + " " + posX + " " + posY;
   }
 
   

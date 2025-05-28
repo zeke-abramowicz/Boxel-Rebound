@@ -75,7 +75,7 @@ class Level {
     return myLevel;
   }
   
-  int size(){
+  int getSize(){
     return size;
   }
   
@@ -95,6 +95,7 @@ class Level {
       if (newStr.substring(0, 1).equals("1")){
         String str2 = newStr.substring(1);
         String[] arr2 = str2.split(" ");
+        //println(arr2);
         myLevel.add(new BasicBlock(float(arr2[0]), float(arr2[1])));
       }
       if (newStr.substring(0, 1).equals("2")){
