@@ -3,10 +3,12 @@ class Square {
   int jumpPower;
   PVector playerLocation, velocity, acceleration;
   boolean touchingGround;
+  PImage joshy;
 
   PVector gravity = new PVector (0.0, 0.5);
 
   public Square(int size, PVector location, int jump){
+    joshy = loadImage("Face.png");
     touchingGround=true;
     velocity = new PVector(0.0,0.0);
     acceleration = new PVector(0.0,0.0);
@@ -16,11 +18,18 @@ class Square {
   }
   
   public void move(){
+    fill(120, 140, 250);
+    stroke(120, 140, 250);
+    rect(playerLocation.x, playerLocation.y, size, size);
     applyForce(gravity);
     velocity.add(acceleration);
     playerLocation.add(velocity);
     reset();
-    velocity.limit(30);
+    velocity.limit(10);
+    fill(255);
+    stroke(255);
+    rect(playerLocation.x, playerLocation.y, size, size);
+    image(joshy,playerLocation.x, playerLocation.y, size, size);
   }
   
   public void jump(){
@@ -38,36 +47,67 @@ class Square {
     acceleration = new PVector(0.0,0.0);
   }
   
-  
-  public boolean blockDown(){
-    
-    
-    return false;
-  }
-  
   public PVector getLocation(){
     return playerLocation;
   }
   public void setLocation(PVector newP){
     playerLocation = newP;
   }
-  public int getSize(){
-    return size;
+  
+  void squareHere(Block currBlock){
+    //testing version
+      boolean notTooHigh = playerLocation.y+size>=currBlock.posY;
+      boolean notTooLow = playerLocation.y+size<=currBlock.posY+25;//change 25?
+      boolean inBlockWidth = playerLocation.x+size>currBlock.posX&&playerLocation.x<currBlock.posX+currBlock.getSquareSize();
+      
+      if (notTooHigh&&notTooLow&&inBlockWidth){
+        if (currBlock.bClass().equals("Basic")){
+        System.out.println("Touching basic block");
+        velocity.y = 0;
+        playerLocation = new PVector (playerLocation.x, currBlock.posY - size);
+        touchingGround = true;
+        }
+        
+        if (currBlock.bClass().equals("Spike")){
+        System.out.println("Touching spike block");
+        setup();
+        velocity.y = 0;
+        playerLocation = new PVector (playerLocation.x, currBlock.posY - size);
+        touchingGround = true;
+        }
+        
+        if (currBlock.bClass().equals("Finish")){
+        System.out.println("Touching finish block");
+        textSize(50);
+        fill(255);
+        text("Level Completed!", 100, 100);
+        velocity.y=0;
+        acceleration.y = 0;
+        playerLocation = new PVector (playerLocation.x, currBlock.posY-size);
+        touchingGround = true;
+        }
+      }
+    
   }
   
-  /**
-  void SquareHere(Level curLev){
-    //cycle through level, check the position data of each block
-    //getLevel is in Level
-    ArrayList currentLevel = curLev.getLevel();
+  
+  /**void squareHere(Level curLev){
+    ArrayList<Block> currentLevel = curLev.getLevel();
+    
     for (int i =0; i< currentLevel.size();i++){
-      if (playerLocation.y+size==currentLevel.get(i).posY&&playerLocation.x>=currentLevel.get(i).posX&&playerLocation.x<=currentLevel.get(i).posX+size){
-      //posY and posX are public in Level
-        reset();
-        playerLocation = new PVector (playerLocation.x, currentLevel.get(i).posY);
+      Block currBlock = currentLevel.get(i);
+      boolean notTooHigh = playerLocation.y+size>=currBlock.posY;
+      boolean notTooLow = playerLocation.y+size<=currBlock.posY+25;//change 25?
+      boolean inBlockWidth = playerLocation.x+size>currBlock.posX&&playerLocation.x<currBlock.posX+currBlock.getSquareSize();
+      
+      if (notTooHigh&&notTooLow&&inBlockWidth){
+        //check classes l8r
+        velocity.y = 0;
+        playerLocation = new PVector (playerLocation.x, (currentLevel.get(i)).posY - size);
         touchingGround = true;
       }
     }
-  }
-  **/
+    
+  }**/
+  
 }
