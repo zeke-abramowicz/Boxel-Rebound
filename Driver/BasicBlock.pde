@@ -5,14 +5,16 @@ class BasicBlock extends Block {
   }
   
   void createBlock(){
+    stroke(0);
     fill(128, 20, 128);
-    rect(posX, posY, getSquareSize(), getSquareSize());
+    //rect(posX, posY, getSquareSize(), getSquareSize());
+    rect(posX-getSquareSize()/2, posY-getSquareSize()/2, getSquareSize(), getSquareSize());
   }
   
   void deleteBlock(){
     fill(120, 140, 250);
     stroke(120, 140, 250);
-    rect(posX, posY, getSquareSize(), getSquareSize());
+    rect(posX-getSquareSize()/2, posY-getSquareSize()/2, getSquareSize(), getSquareSize());
   }
   
   String toString(){

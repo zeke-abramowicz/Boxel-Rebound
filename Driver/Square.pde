@@ -25,7 +25,7 @@ class Square {
     velocity.add(acceleration);
     playerLocation.add(velocity);
     reset();
-    velocity.limit(10);
+    velocity.limit(50);
     fill(255);
     stroke(255);
     rect(playerLocation.x, playerLocation.y, size, size);
@@ -56,23 +56,25 @@ class Square {
   
   void squareHere(Block currBlock){
     //testing version
-      boolean notTooHigh = playerLocation.y+size>=currBlock.posY;
-      boolean notTooLow = playerLocation.y+size<=currBlock.posY+25;//change 25?
-      boolean inBlockWidth = playerLocation.x+size>currBlock.posX&&playerLocation.x<currBlock.posX+currBlock.getSquareSize();
+    float actualY = currBlock.posY-currBlock.getSquareSize()/2;
+    float actualX = currBlock.posX-currBlock.getSquareSize()/2;
+      boolean notTooHigh = playerLocation.y+size>=actualY;
+      boolean notTooLow = playerLocation.y+size<=actualY+25;//change 25?
+      boolean inBlockWidth = playerLocation.x+size>actualX&&playerLocation.x<actualX+currBlock.getSquareSize();
       
       if (notTooHigh&&notTooLow&&inBlockWidth){
         if (currBlock.bClass().equals("Basic")){
         System.out.println("Touching basic block");
         velocity.y = 0;
-        playerLocation = new PVector (playerLocation.x, currBlock.posY - size);
+        playerLocation = new PVector (playerLocation.x, actualY - size);
         touchingGround = true;
         }
         
         if (currBlock.bClass().equals("Spike")){
         System.out.println("Touching spike block");
-        setup();
+        screen=2;
         velocity.y = 0;
-        playerLocation = new PVector (playerLocation.x, currBlock.posY - size);
+        playerLocation = new PVector (playerLocation.x, actualY - size);
         touchingGround = true;
         }
         
@@ -83,7 +85,7 @@ class Square {
         text("Level Completed!", 100, 100);
         velocity.y=0;
         acceleration.y = 0;
-        playerLocation = new PVector (playerLocation.x, currBlock.posY-size);
+        playerLocation = new PVector (playerLocation.x, actualY-size);
         touchingGround = true;
         }
       }

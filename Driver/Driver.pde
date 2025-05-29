@@ -4,7 +4,8 @@ LevelList levels = new LevelList();
 int currentLevel;
 Square josh;
 Block john,jim,jack; //testing
-int numero = 0; //testing
+int numero = 2; //testing
+int menuTime;
 PImage Sun,Cloud;
 int screen;
 
@@ -35,6 +36,28 @@ void draw() {
     text("Level Select: ",240,460);
   }
   if(screen==1){
+    noStroke();
+    fill(120, 140, 250);
+    rect(47,32,75,25);
+    textSize(20);
+    fill(60);
+    int cent = (millis()-menuTime)/10;
+    int c = cent%100;
+    int s = (cent/100)%60;
+    int m = cent/6000;
+    
+    if (s<=9){
+    text(m+":0"+s+":",50,50);
+    }else{
+      text(m+":"+s+":",50,50);
+    }
+    
+    if (c<=9){
+      text("0"+c, 90,50);
+    }else{
+      text(c,90,50);
+    }
+
   image(Sun, 370, 50, 150, 150);
   image(Cloud, 200, 80, 150, 150);
   rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
@@ -45,7 +68,7 @@ void draw() {
   
   if (numero==0){
   josh.squareHere(john);
-  john = new BasicBlock(60,300);
+  john = new BasicBlock(60,500);
   }else if(numero == 1){
   josh.squareHere(jim);
   jim = new Spike(60,300);
@@ -54,6 +77,14 @@ void draw() {
   fill(255);
   jack = new Finish(60,300);
   }
+  }
+  
+  if(screen==2){
+    background(255);
+    textSize(20);
+    fill(60);
+    text("Game over",230,170);
+    text("Press [ENTER] to restart",190,400);
   }
 }
 
@@ -67,14 +98,19 @@ void keyPressed(){
   if(key == ENTER&&screen==0){
     screen = 1;
     background(120, 140, 250);
-    josh = new Square(30, new PVector(60,150),30);
+    menuTime = millis();
+    josh = new Square(30, new PVector(45,150),12);
     if (numero == 0){
-  john = new BasicBlock(60,300);
+  john = new BasicBlock(60,500);
   }else if(numero == 1){
   jim = new Spike(60,300);
   }else{
   jack = new Finish(60,300);
   }
+  }
+  
+  if(key==ENTER && screen == 2){
+    setup();
   }
 }
 

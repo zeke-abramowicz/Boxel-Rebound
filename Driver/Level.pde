@@ -17,7 +17,7 @@ class Level {
   void addBlock(){
     if (keyPressed){
       if (key == '1'){
-        myLevel.add(new BasicBlock((int)(mouseX / Block.squareSize) * Block.squareSize, (int)(mouseY / Block.squareSize) * Block.squareSize));
+        myLevel.add(new BasicBlock((int)(mouseX / Block.squareSize) * Block.squareSize+ Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize+ Block.squareSize / 2));
         size++;
       }
       if (key == '2'){
