@@ -113,4 +113,3 @@ class Square {
   }**/
   
 }
->>>>>>> jake

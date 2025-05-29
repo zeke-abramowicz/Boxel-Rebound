@@ -11,7 +11,7 @@ class BasicBlock extends Block {
   }
   
   void deleteBlock(){
-    fill(120, 140, 250);
+    fill(120.0, 140.0, 250.0);
     stroke(120, 140, 250);
     rect(posX-getSquareSize()/2, posY-getSquareSize()/2, getSquareSize(), getSquareSize());
   }

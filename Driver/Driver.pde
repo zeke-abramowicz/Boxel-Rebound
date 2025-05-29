@@ -11,7 +11,7 @@ LevelList levels = new LevelList();
 int currentLevel;
 Square josh;
 Block john,jim,jack; //testing
-int numero = 2; //testing
+int numero = 0; //testing
 int menuTime;
 PImage Sun,Cloud;
 int screen;
@@ -20,10 +20,10 @@ void setup(){
   background(120, 140, 250);
   size(500,800);
   currentLevel = 0;
-    size(600,700);
   Sun = loadImage("Sun.png");
   Cloud = loadImage("Cloud.png");
   screen = 0;
+  levels.createLevel();
 }
 
 
@@ -47,13 +47,13 @@ void draw() {
     text("Level Select: ",240,460);
   }
   if(screen==1){
-      if (levels.editMode == true){
+  if (levels.editMode == true){
     if (frameCount % 4 == 0){
           levels.editMode();
     }
   }
   else if (levels.runMode == true){
-    //levels.runLevel();    
+    levels.runLevel();    
   }
     noStroke();
     fill(120, 140, 250);
@@ -104,9 +104,12 @@ void draw() {
     fill(60);
     text("Game over",230,170);
     text("Press [ENTER] to restart",190,400);
+    if (frameCount + 1 % 4 == 0){
+      levels.nextLevel();
+    }
+    levels.runLevel();      
   }
 }
-
 
 void keyPressed(){
   if (key==CODED&&screen!=0){
