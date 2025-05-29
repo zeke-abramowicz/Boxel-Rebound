@@ -22,13 +22,15 @@ void forces(){
 }
 
 void draw() {
-
   if (levels.editMode == true){
     if (frameCount % 4 == 0){
           levels.editMode();
     }
   }
   else if (levels.runMode == true){
+    if (frameCount + 1 % 4 == 0){
+      levels.nextLevel();
+    }
     levels.runLevel();      
   }
 }

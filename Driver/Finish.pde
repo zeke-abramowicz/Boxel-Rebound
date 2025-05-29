@@ -14,7 +14,7 @@ class Finish extends Block{
           else noStroke();
           */
           stroke(0);
-          rect(row, col, squareSize2 / 10, squareSize2 / 10);
+          rect(round(row), round(col), squareSize2 / 10, squareSize2 / 10);
         }
         else {
           fill(0, 0, 0);
@@ -23,7 +23,7 @@ class Finish extends Block{
           else noStroke();
           */
           stroke(0);
-          rect(row, col, squareSize2 / 10, squareSize2 / 10);
+          rect(round(row), round(col), squareSize2 / 10, squareSize2 / 10);
         }
       }
     }
