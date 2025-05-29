@@ -18,20 +18,19 @@ class Level {
   void addBlock(){
     if (keyPressed){
       if (key == '1'){
-        myLevel.add(new BasicBlock((int)(mouseX / Block.squareSize) * Block.squareSize, (int)(mouseY / Block.squareSize) * Block.squareSize));
+        myLevel.add(new BasicBlock((int)(mouseX / Block.squareSize) * Block.squareSize+ Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize+ Block.squareSize / 2));
         size++;
+        myLevel.get(size - 1).createBlock();
       }
       if (key == '2'){
         myLevel.add(new Spike((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize + Block.squareSize / 2));
         size++;
+                myLevel.get(size - 1).createBlock();
       }
       if (key == '3'){
-        myLevel.add(new Finish((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2
-        , 
-        (int)(mouseY / Block.squareSize) * Block.squareSize 
-        + Block.squareSize / 2
-        ));
+        myLevel.add(new Finish((int)(mouseX / Block.squareSize) * Block.squareSize + Block.squareSize / 2, (int)(mouseY / Block.squareSize) * Block.squareSize + Block.squareSize / 2));
         size++;
+                myLevel.get(size - 1).createBlock();
       }
       if (key == '4'){
         if (size > 0){
@@ -71,6 +70,16 @@ class Level {
       myLevel.get(i).createBlock();
     }
   }
+  
+    void moveLeft(int x){
+            background(120, 140, 250);
+    for (int i = 0; i < size; i++){
+      //myLevel.get(i).deleteBlock();
+      myLevel.get(i).posX -= x;
+      myLevel.get(i).createBlock();
+    }
+  }
+
   
   ArrayList<Block> getLevel(){
     return myLevel;
@@ -122,8 +131,6 @@ class Level {
     }
     println(this.toString());
   }
-  
-
         
   
 }

@@ -1,7 +1,6 @@
 class Finish extends Block{
   Finish(float x, float y){
     super(x, y);
-    createBlock();
 }
 
   void createBlock(){
@@ -15,6 +14,8 @@ class Finish extends Block{
           else noStroke();
           */
           stroke(0);
+          if (row != posX + squareSize2 / 2 - 1 && col != posY + squareSize2 / 2 - 1 && (col != posY - squareSize2 / 2 || row != posX - squareSize2 / 2)) stroke(0);
+          else noStroke();
           rect(row, col, squareSize2 / 10, squareSize2 / 10);
         }
         else {
@@ -24,6 +25,8 @@ class Finish extends Block{
           else noStroke();
           */
           stroke(0);
+          if (row != posX + squareSize2 / 2 - 1 && col != posY + squareSize2 / 2 - 1 && (col != posY - squareSize2 / 2 || row != posX - squareSize2 / 2)) stroke(0);
+          else noStroke();
           rect(row, col, squareSize2 / 10, squareSize2 / 10);
         }
       }
@@ -38,5 +41,9 @@ class Finish extends Block{
   
   String toString(){
     return "2" + " " + posX + " " + posY;
+  }
+  
+  String bClass(){
+    return "Finish";
   }
 }

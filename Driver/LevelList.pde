@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 
 class LevelList {
@@ -49,4 +50,7 @@ class LevelList {
     }
     */
     
+  public Level getLevel(){
+    return test;
+  }
 }

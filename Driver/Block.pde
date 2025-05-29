@@ -25,5 +25,8 @@ abstract class Block {
   String toString(){
     return "";
   }
-  
+
+  String bClass(){
+    return "";
+  }
 }

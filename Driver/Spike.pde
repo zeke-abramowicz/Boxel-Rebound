@@ -1,7 +1,6 @@
 class Spike extends Block {
   Spike(float x, float y){
     super(x, y);
-    createBlock();
   }
   
   void createBlock(){
@@ -20,5 +19,9 @@ class Spike extends Block {
   
   String toString(){
     return "3" + " " + posX + " " + posY; 
+  }
+  
+  String bClass(){
+    return "Spike";
   }
 }
