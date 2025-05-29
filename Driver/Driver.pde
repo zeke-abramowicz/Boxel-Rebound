@@ -86,7 +86,7 @@ void draw() {
   }
   
   if (numero==0){
-  josh.squareHere(john);
+  //josh.squareHere(john);
   john = new BasicBlock(60,500);
   }else if(numero == 1){
   josh.squareHere(jim);
@@ -123,13 +123,6 @@ void keyPressed(){
     background(120, 140, 250);
     menuTime = millis();
     josh = new Square(30, new PVector(45,150),12);
-    if (numero == 0){
-  john = new BasicBlock(60,500);
-  }else if(numero == 1){
-  jim = new Spike(60,300);
-  }else{
-  jack = new Finish(60,300);
-  }
   }
   
   if(key==ENTER && screen == 2){

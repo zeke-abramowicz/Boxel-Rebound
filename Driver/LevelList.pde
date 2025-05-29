@@ -25,9 +25,9 @@ class LevelList {
     levelList[1] = level2;
     levelList[2] = level3;
     currentLevel = 0;
-    editMode = false;
+    editMode = true;
     test = new Level();
-    runMode = true;
+    runMode = false;
     inputList = new String[]{input1, input2, input3};
 }
   

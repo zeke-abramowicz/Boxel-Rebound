@@ -2,7 +2,7 @@ class Finish extends Block{
   Finish(float x, float y){
     super(x, y);
 }
-
+//Fix the createBlock to a grid so that you are just moving a grid over
   void createBlock(){
         float squareSize2 = getSquareSize();
     for (float row = posX - squareSize2 / 2; row < posX + squareSize2 / 2; row += squareSize2 / 10){

@@ -112,7 +112,7 @@ class Level {
         float x = float(arr2[0]);
         float y = float(arr2[1]);
         println(float(arr2[1]));
-        BasicBlock block = new BasicBlock(x, y);
+        BasicBlock block = new BasicBlock(x + Block.squareSize / 2, y + Block.squareSize / 2);
         myLevel.add(block);
         size++;
       }
