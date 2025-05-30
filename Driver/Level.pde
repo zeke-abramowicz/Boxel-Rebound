@@ -58,7 +58,7 @@ class Level {
             background(120, 140, 250);
     for (int i = size - 1; i >= 0; i--){
       //myLevel.get(i).deleteBlock();
-      myLevel.get(i).posX += 10;
+      myLevel.get(i).posX += Block.squareSize / 2;
       myLevel.get(i).createBlock();
     }
   }
@@ -67,7 +67,7 @@ class Level {
             background(120, 140, 250);
     for (int i = 0; i < size; i++){
       //myLevel.get(i).deleteBlock();
-      myLevel.get(i).posX -= 10;
+      myLevel.get(i).posX -= Block.squareSize / 2;
       myLevel.get(i).createBlock();
     }
   }
