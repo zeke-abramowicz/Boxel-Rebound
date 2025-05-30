@@ -1,3 +1,4 @@
+
 /*
 
 What to work on:
@@ -47,6 +48,7 @@ void draw() {
     text("Level Select: ",240,460);
   }
   if(screen==1){
+    Menu thisMenu = new Menu();
   if (levels.editMode == true){
     if (frameCount % 4 == 0){
           levels.editMode();
@@ -55,6 +57,8 @@ void draw() {
   else if (levels.runMode == true){
     levels.runLevel();    
   }
+      thisMenu = new Menu();
+
     noStroke();
     fill(120, 140, 250);
     rect(47,32,75,25);
@@ -85,6 +89,9 @@ void draw() {
     levels.editMode();
   }
   
+  thisMenu = new Menu();
+
+  
   if (numero==0){
   //josh.squareHere(john);
   john = new BasicBlock(60,500);
@@ -104,10 +111,7 @@ void draw() {
     fill(60);
     text("Game over",230,170);
     text("Press [ENTER] to restart",190,400);
-    if (frameCount + 1 % 4 == 0){
-      levels.nextLevel();
-    }
-    levels.runLevel();      
+    levels.nextLevel();
   }
 }
 
