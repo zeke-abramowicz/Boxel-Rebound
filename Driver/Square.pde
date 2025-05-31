@@ -64,14 +64,12 @@ class Square {
       
       if (notTooHigh&&notTooLow&&inBlockWidth){
         if (currBlock.bClass().equals("Basic")){
-        System.out.println("Touching basic block");
         velocity.y = 0;
         playerLocation = new PVector (playerLocation.x, actualY - size);
         touchingGround = true;
         }
         
         if (currBlock.bClass().equals("Spike")){
-        System.out.println("Touching spike block");
         screen=2;
         velocity.y = 0;
         playerLocation = new PVector (playerLocation.x, actualY - size);
@@ -79,7 +77,6 @@ class Square {
         }
         
         if (currBlock.bClass().equals("Finish")){
-        System.out.println("Touching finish block");
         textSize(50);
         fill(255);
         text("Level Completed!", 100, 100);

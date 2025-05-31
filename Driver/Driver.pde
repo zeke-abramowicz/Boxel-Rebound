@@ -32,32 +32,33 @@ void forces(){
 }
 
 void draw() {
+  Menu thisMenu = new Menu();
   if (screen==0){
-    background(255);
+    background(180, 65, 180);
     textSize(50);
-    text("Welcome to", 80, 95);
-    text("Boxel Rebound!", 180, 140);
+    text("Welcome to", 130, 95);
+    text("Boxel Rebound!", 92.5, 140);
     
     textSize(20);
     fill(60);
     text("A game by Zeke n' Jake",230,170);
-    text("Controls: blah blah blah placeholder",100,240);
-    text("plaaaaaaaaaaaaaaceholderrrrrr",100,270);
-    text("lalalalalalala placeholder",100,340);
-    text("Press [ENTER] to start level",190,400);
-    text("Level Select: ",240,460);
+    //text("Controls: blah blah blah placeholder",100,240);
+    //text("plaaaaaaaaaaaaaaceholderrrrrr",100,270);
+    //text("lalalalalalala placeholder",100,340);
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
+    else fill(60);
+    rect(60, 380, 380, 40);
+    fill(255);
+    text("Play Game",210,407);
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540) fill(0);
+    else fill(60);
+    rect(60, 500, 380, 40);
+    fill(255);
+    text("Edit Mode",210,526.5);
   }
   if(screen==1){
-    Menu thisMenu = new Menu();
-  if (levels.editMode == true){
-    if (frameCount % 4 == 0){
-          levels.editMode();
-    }
-  }
-  else if (levels.runMode == true){
     levels.runLevel();    
-  }
-      thisMenu = new Menu();
+    thisMenu = new Menu();
 
     noStroke();
     fill(120, 140, 250);
@@ -84,11 +85,7 @@ void draw() {
   image(Sun, 370, 50, 150, 150);
   image(Cloud, 200, 80, 150, 150);
   rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
-  josh.move();
-    if (levels.editMode == true && frameCount % 4 == 0){
-    levels.editMode();
-  }
-  
+  josh.move();  
   thisMenu = new Menu();
 
   
@@ -113,6 +110,21 @@ void draw() {
     text("Press [ENTER] to restart",190,400);
     levels.nextLevel();
   }
+  if (screen == 3){
+    thisMenu = new Menu();
+    if (frameCount % 4 == 0){
+       levels.editMode();
+    }
+
+    noStroke();
+    fill(120, 140, 250);
+    rect(47,32,75,25);
+    textSize(20);
+    fill(60);
+    image(Sun, 370, 50, 150, 150);
+  image(Cloud, 200, 80, 150, 150);
+      thisMenu = new Menu();
+  }
 }
 
 void keyPressed(){
@@ -122,15 +134,27 @@ void keyPressed(){
     }
   }
   
-  if(key == ENTER&&screen==0){
+  
+  if(key==ENTER && screen == 2){
+    setup();
+  }
+}
+
+void mouseClicked(){
+   if(screen == 0 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     screen = 1;
     background(120, 140, 250);
     menuTime = millis();
     josh = new Square(30, new PVector(45,150),12);
+    //levels.editMode = false;
+    //levels.runMode = true;
   }
-  
-  if(key==ENTER && screen == 2){
-    setup();
+  if (screen == 0 && mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540){
+    screen = 3;
+    background(120, 140, 250);
+    //menuTime = millis();
+    //levels.editMode = true;
+    //levels.runMode = false;
   }
 }
 

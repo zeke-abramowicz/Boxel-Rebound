@@ -58,7 +58,7 @@ class Level {
             background(120, 140, 250);
     for (int i = size - 1; i >= 0; i--){
       //myLevel.get(i).deleteBlock();
-      myLevel.get(i).posX += Block.squareSize / 2;
+      myLevel.get(i).posX += Block.squareSize;
       myLevel.get(i).createBlock();
     }
   }
@@ -67,7 +67,7 @@ class Level {
             background(120, 140, 250);
     for (int i = 0; i < size; i++){
       //myLevel.get(i).deleteBlock();
-      myLevel.get(i).posX -= Block.squareSize / 2;
+      myLevel.get(i).posX -= Block.squareSize;
       myLevel.get(i).createBlock();
     }
   }
@@ -103,10 +103,7 @@ class Level {
     String[] arr = split(str, '|');
     for (int i = 0; i < arr.length; i++){
       String newStr = arr[i];
-      println(newStr.substring(0, 1));
       if (newStr.substring(0, 1).equals("1")){
-        println(newStr);
-        println(newStr.substring(2));
         String str2 = newStr.substring(2);
         String[] arr2 = split(str2, ' ');
         float x = float(arr2[0]);
@@ -136,7 +133,6 @@ class Level {
       }
       
     }
-    println(this.toString());
   }
         
   
