@@ -162,6 +162,51 @@ void draw() {
     fill(255);
     text("Resume Editing",195,526.5);
   }
+  if (screen == 6) {
+    levels.runTest();    
+    thisMenu = new Menu();
+
+    noStroke();
+    fill(120, 140, 250);
+    rect(47,32,75,25);
+    textSize(20);
+    fill(60);
+    int cent = (millis()-menuTime)/10;
+    int c = cent%100;
+    int s = (cent/100)%60;
+    int m = cent/6000;
+    
+    if (s<=9){
+    text(m+":0"+s+":",50,50);
+    }else{
+      text(m+":"+s+":",50,50);
+    }
+    
+    if (c<=9){
+      text("0"+c, 90,50);
+    }else{
+      text(c,90,50);
+    }
+
+  image(Sun, 370, 50, 150, 150);
+  image(Cloud, 200, 80, 150, 150);
+  rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
+  josh.move();  
+  thisMenu = new Menu();
+
+  
+  if (numero==0){
+  //josh.squareHere(john);
+  john = new BasicBlock(60,500);
+  }else if(numero == 1){
+  josh.squareHere(jim);
+  jim = new Spike(60,300);
+  }else{
+  josh.squareHere(jack);
+  fill(255);
+  jack = new Finish(60,300);
+  }
+  }
 
 }
 
@@ -179,7 +224,7 @@ void keyPressed(){
 }
 
 void mouseClicked(){
-   if(screen == 0 || screen == 4 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
+   if((screen == 0 || screen == 4) && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     screen = 1;
     background(120, 140, 250);
     menuTime = millis();
@@ -187,12 +232,23 @@ void mouseClicked(){
     //levels.editMode = false;
     //levels.runMode = true;
   }
-  if (screen == 0 || screen == 4 && mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540){
+  if ((screen == 0 || screen == 4) && mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540){
     screen = 3;
     background(120, 140, 250);
     //menuTime = millis();
     //levels.editMode = true;
     //levels.runMode = false;
+  }
+  if (screen == 5 && mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540){
+    screen = 3;
+    background(120, 140, 250);
+    for (int i = 0; i < levels.test.getSize(); i++){
+      levels.test.getLevel().get(i).createBlock();
+    }
+  }
+  if (screen == 5 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
+    screen = 6;
+    background(120, 140, 250);
   }
 }
 

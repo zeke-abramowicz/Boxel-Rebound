@@ -79,4 +79,14 @@ class LevelList {
   public Level getLevel(){
     return test;
   }
+  
+  public void runTest(){
+   if (test.getSize() > 0){
+    if (frameCount % 2 == 0){
+       test.moveLeft(4);
+  }
+
+    }
+  }
+  
 }
