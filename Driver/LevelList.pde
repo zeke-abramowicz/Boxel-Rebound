@@ -51,8 +51,6 @@ class LevelList {
   }
   
   
-  void reset(){
-  }
   
   void runLevel() {
     Level tester = levelList[currentLevel];

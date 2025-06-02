@@ -12,21 +12,23 @@ class Menu {
   void isClicked() {
     if (mouseX >= 35 && mouseX <= 85 && mouseY >= 76 && mouseY <= 106){
       if (mousePressed){
-        screen = 0;
+        if (screen == 3 || screen == 4) screen = 5;
+        else screen = 4;
       }
     }
   }
   
   void createMenu(){
-    fill(180, 65, 180);
+    if (mouseX >= 35 && mouseX <= 85 && mouseY >= 76 && mouseY <= 106) fill(0);
+    else fill(180, 65, 180);
     noStroke();
-    rect(35, 76, 50, 50);
+    rect(36, 76, 50, 50);
     fill(250, 250, 250);
-    rect(45.25, 85.75, 25, 4);
+    rect(48.5, 89, 25, 4, 70);
         fill(250, 250, 250);
-    rect(45.25, 100.75, 25, 4);
+    rect(48.5, 99, 25, 4, 70);
         fill(250, 250, 250);
-    rect(45.25, 115.75, 25, 4);
+    rect(48.5, 109, 25, 4, 70);
   }
     
   

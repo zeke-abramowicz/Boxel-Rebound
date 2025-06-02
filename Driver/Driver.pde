@@ -122,9 +122,47 @@ void draw() {
     textSize(20);
     fill(60);
     image(Sun, 370, 50, 150, 150);
-  image(Cloud, 200, 80, 150, 150);
-      thisMenu = new Menu();
+    image(Cloud, 200, 80, 150, 150);
+    thisMenu = new Menu();
   }
+  if (screen == 4){
+    background(180, 65, 180);
+    textSize(50);
+    text("Game Paused!", 105, 140);
+    
+    textSize(20);
+    fill(60);
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
+    else fill(60);
+    rect(60, 380, 380, 40);
+    fill(255);
+    text("Resume Game",198,407);
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540) fill(0);
+    else fill(60);
+    rect(60, 500, 380, 40);
+    fill(255);
+    text("Edit Mode",210,526.5);
+
+  }
+  if (screen == 5){
+    background(180, 65, 180);
+    textSize(50);
+    text("Edit Mode", 135, 140);
+    
+    textSize(20);
+    fill(60);
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
+    else fill(60);
+    rect(60, 380, 380, 40);
+    fill(255);
+    text("Play Level",210,407);
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540) fill(0);
+    else fill(60);
+    rect(60, 500, 380, 40);
+    fill(255);
+    text("Resume Editing",195,526.5);
+  }
+
 }
 
 void keyPressed(){
@@ -141,7 +179,7 @@ void keyPressed(){
 }
 
 void mouseClicked(){
-   if(screen == 0 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
+   if(screen == 0 || screen == 4 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     screen = 1;
     background(120, 140, 250);
     menuTime = millis();
@@ -149,7 +187,7 @@ void mouseClicked(){
     //levels.editMode = false;
     //levels.runMode = true;
   }
-  if (screen == 0 && mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540){
+  if (screen == 0 || screen == 4 && mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540){
     screen = 3;
     background(120, 140, 250);
     //menuTime = millis();
