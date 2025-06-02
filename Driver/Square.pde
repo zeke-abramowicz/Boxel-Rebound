@@ -132,5 +132,23 @@ class Square {
         }
       }
     }
+    
+    for (int j = 0; j < currentLevel.size(); j++){
+      Block sideBlock = currentLevel.get(j);
+      float actualY1 = sideBlock.posY-sideBlock.getSquareSize()/2;
+      float actualX1 = sideBlock.posX-sideBlock.getSquareSize()/2;
+      boolean xTouch = playerLocation.x+size>actualX1+12&&playerLocation.x<actualX1+sideBlock.getSquareSize();//12 is the forgiveness
+      boolean yAlign = playerLocation.y+size>actualY1&&playerLocation.y+size<=actualY1+sideBlock.getSquareSize();
+      
+      if(xTouch&&yAlign){//hit side of block
+      screen=2;
+      }
+      
+      if(playerLocation.y>height){//fall off map
+      screen = 2;
+      }
+    }
+    
+    
   }
 }

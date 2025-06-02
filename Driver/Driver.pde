@@ -32,17 +32,17 @@ void draw() {
   if (screen==0) {
     background(255);
     textSize(50);
-    text("Welcome to", 80, 95);
-    text("Boxel Rebound!", 180, 140);
+    text("Welcome to", 60, 95);
+    text("Boxel Rebound!", 120, 140);
 
     textSize(20);
     fill(60);
-    text("A game by Zeke n' Jake", 230, 170);
+    text("A game by Zeke n' Jake", 210, 170);
     text("Controls: blah blah blah placeholder", 100, 240);
     text("plaaaaaaaaaaaaaaceholderrrrrr", 100, 270);
     text("lalalalalalala placeholder", 100, 340);
-    text("Press [ENTER] to start level", 190, 400);
-    text("Level Select: ", 240, 460);
+    text("Press [ENTER] to start level", 130, 400);
+    text("Level Select: ", 190, 460);
   }
   if (screen==1) {
     if (levels.editMode == true) {
