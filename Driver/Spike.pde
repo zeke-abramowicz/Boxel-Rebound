@@ -5,7 +5,7 @@ class Spike extends Block {
   
   void createBlock(){
         float squareSize2 = getSquareSize();
-        //stroke(120, 140, 250);
+        //stroke(120, 140, 250); //test
         fill(128, 20, 128);
         triangle(posX - squareSize2 / 2, posY + squareSize2 / 2, posX + squareSize2 / 2, posY + squareSize2 / 2, posX, posY - squareSize2 / 2);
   }

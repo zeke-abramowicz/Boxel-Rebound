@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-class Level {
+class Level { //test
   private ArrayList<Block> myLevel;
   private int size;
   

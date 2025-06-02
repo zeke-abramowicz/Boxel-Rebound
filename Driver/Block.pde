@@ -4,7 +4,7 @@ abstract class Block {
   public static final float squareSize = 30.0;
   void position(){
   }
-  
+  //test
   Block(float x, float y) {
     this.posX = x;
     this.posY = y;

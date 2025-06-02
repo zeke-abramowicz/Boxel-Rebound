@@ -1,6 +1,6 @@
 class Finish extends Block{
   Finish(float x, float y){
-    super(x, y);
+    super(x, y); //test
 }
 //Fix the createBlock to a grid so that you are just moving a grid over
   void createBlock(){
