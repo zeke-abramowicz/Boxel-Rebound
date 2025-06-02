@@ -247,8 +247,13 @@ void mouseClicked(){
     }
   }
   if (screen == 5 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
-    screen = 6;
+    if (levels.test.getSize() > 0){
+          screen = 6;
     background(120, 140, 250);
+        menuTime = millis();
+    josh = new Square(30, new PVector(45,150),12);
+
+    }
   }
 }
 
