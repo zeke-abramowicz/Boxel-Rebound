@@ -1,6 +1,6 @@
 class BasicBlock extends Block {
   BasicBlock(float x, float y){
-    super(x, y);
+    super(x, y); //setup
   }
   
   void createBlock(){
