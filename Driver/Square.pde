@@ -4,6 +4,7 @@ class Square {
   PVector playerLocation, velocity, acceleration;
   boolean touchingGround;
   PImage joshy;
+  float rotat = 0;
 
   PVector gravity = new PVector (0.0, 0.5);
 
@@ -18,18 +19,38 @@ class Square {
   }
 
   public void move() {
+    
+    if(touchingGround){
     fill(120, 140, 250);
     stroke(120, 140, 250);
     rect(playerLocation.x, playerLocation.y, size, size);
+    }
     applyForce(gravity);
     velocity.add(acceleration);
     playerLocation.add(velocity);
     reset();
     velocity.limit(50);
+    
+    
+    if(!touchingGround){
+    fill(120, 140, 250);
+    translate(playerLocation.x+size/2, playerLocation.y+size/2);
+    rotate(rotat); 
+    rect(-15,-15, 30, 30);
+    image(joshy, -15, -15, size, size);
+    rotat +=0.1;
+    //translate(playerLocation.x+size/2, playerLocation.y+size/2);
+    rotate(rotat); 
+    fill(255);
+    rect(-15,-15, 30, 30);
+    image(joshy, -15, -15, size, size);
+    }
+    else{
     fill(255);
     stroke(255);
     rect(playerLocation.x, playerLocation.y, size, size);
     image(joshy, playerLocation.x, playerLocation.y, size, size);
+    }
   }
 
   public void jump() {

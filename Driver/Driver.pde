@@ -76,7 +76,6 @@ void draw() {
 
     image(Sun, 370, 50, 150, 150);
     image(Cloud, 200, 80, 150, 150);
-    rect(josh.getLocation().x, josh.getLocation().y, josh.size, josh.size);
     josh.move();
     if (levels.editMode == true && frameCount % 4 == 0) {
       levels.editMode();
