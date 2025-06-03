@@ -74,21 +74,21 @@ class Square {
 
         if (currBlock.bClass().equals("Spike")) {
           // System.out.println("Touching spike block");
-          screen=2;
+          screen=7;
           velocity.y = 0;
           playerLocation = new PVector (playerLocation.x, actualY - size);
           touchingGround = true;
         }
 
         if (currBlock.bClass().equals("Finish")) {
-          // System.out.println("Touching finish block");
+          //delay(500);
           textSize(50);
           fill(255);
-          text("Level Completed!", 100, 100);
           velocity.y=0;
           acceleration.y = 0;
           playerLocation = new PVector (playerLocation.x, actualY-size);
           touchingGround = true;
+          if (screen != 6) screen = 2;
         }
       }
     }

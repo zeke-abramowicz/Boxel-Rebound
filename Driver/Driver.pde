@@ -75,12 +75,17 @@ void draw() {
   }
   
   if(screen==2){
-    background(255);
+    background(180, 65, 180);
+    textSize(50);
+    text("Edit Mode", 135, 140);
     textSize(20);
     fill(60);
-    text("Game over",230,170);
-    text("Press [ENTER] to restart",190,400);
-    levels.nextLevel();
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
+    else fill(60);
+    rect(60, 380, 380, 40);
+    fill(255);
+    text("Play Next Level",205,407);
+    
   }
   if (screen == 3){
     thisMenu = new Menu();
@@ -164,9 +169,23 @@ void draw() {
   image(Cloud, 200, 80, 150, 150);
   rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
   josh.move();  
+  josh.squareHere(levels.test);
   thisMenu = new Menu();
 
   
+  }
+   if(screen==7){
+    background(180, 65, 180);
+    textSize(50);
+    text("Edit Mode", 135, 140);
+    textSize(20);
+    fill(60);
+    if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
+    else fill(60);
+    rect(60, 380, 380, 40);
+    fill(255);
+    text("Play Again",205,407);
+    
   }
 
 }
@@ -205,11 +224,25 @@ void mouseClicked(){
   if (screen == 5 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     if (levels.test.getSize() > 0){
           screen = 6;
-    background(120, 140, 250);
+        background(120, 140, 250);
         menuTime = millis();
-    josh = new Square(30, new PVector(45,150),12);
+        josh = new Square(30, new PVector(45,150),12);
 
     }
+  }
+  if (screen == 2 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
+    levels.nextLevel();
+        screen = 1;
+    background(120, 140, 250);
+            menuTime = millis();
+        josh = new Square(30, new PVector(45,150),12);
+  }
+  if (screen == 7 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
+    levels.reset();
+    screen = 1;
+    background(120, 140, 250);
+    menuTime = millis();
+    josh = new Square(30, new PVector(45,150),12);
   }
 }
 

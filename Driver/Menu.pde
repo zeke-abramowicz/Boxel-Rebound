@@ -3,7 +3,7 @@ class Menu {
   Menu(){
     //cp5 = new ControlP5();
     //cp5.addButton("myButton");
-    if (screen == 1 || screen == 3){
+    if (screen == 1 || screen == 3 || screen == 6){
       createMenu();
       isClicked();
     }

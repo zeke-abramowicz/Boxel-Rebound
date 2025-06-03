@@ -1,4 +1,3 @@
-
 abstract class Block {
   public float posX;
   public float posY;
