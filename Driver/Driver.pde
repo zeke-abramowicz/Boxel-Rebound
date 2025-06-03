@@ -77,14 +77,14 @@ void draw() {
   if(screen==2){
     background(180, 65, 180);
     textSize(50);
-    text("Edit Mode", 135, 140);
+    text("Edit Mode", 155, 140);
     textSize(20);
     fill(60);
     if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
     else fill(60);
     rect(60, 380, 380, 40);
     fill(255);
-    text("Play Next Level",205,407);
+    text("Play Next Level",186,407);
     
   }
   if (screen == 3){

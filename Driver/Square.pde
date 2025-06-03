@@ -101,11 +101,11 @@ class Square {
       boolean yAlign = playerLocation.y+size>actualY1&&playerLocation.y+size<=actualY1+sideBlock.getSquareSize();
       
       if(xTouch&&yAlign){//hit side of block
-      screen=2;
+      screen=7;
       }
       
       if(playerLocation.y>height){//fall off map
-      screen = 2;
+      screen = 7;
       }
     }
     
