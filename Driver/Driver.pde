@@ -1,3 +1,6 @@
+/*
+First work on creating a better background that looks more like the game. Then work on fixing a few bugs with the menu and stuff, but those things can also be worked on later throughout the week.
+*/
 import java.util.Arrays;
 LevelList levels = new LevelList();
 int currentLevel;
@@ -57,11 +60,24 @@ void draw() {
     int c = cent%100;
     int s = (cent/100)%60;
     int m = cent/6000;
-
+    fill(0);
+    noStroke();
+    rect(86, 36, 90, 50);
     if (s<=9) {
-      text(m+":0"+s+":", 50, 50);
+      fill(250, 250, 250);
+      text(m+":0"+s+":", 101, 68);
     } else {
-      text(m+":"+s+":", 50, 50);
+      fill(250, 250, 250);
+      text(m+":"+s+":", 100, 68);
+    }
+    
+    if (c <= 9){
+      fill(250,250,250);
+      text("0" + c, 140, 68);
+    }
+    else {
+      fill(250,250,250);
+      text(c, 140, 68);
     }
 
   image(Sun, 370, 50, 150, 150);
@@ -148,22 +164,31 @@ void draw() {
     rect(47,32,75,25);
     textSize(20);
     fill(60);
+        fill(0);
+    noStroke();
+    rect(86, 36, 90, 50);
     int cent = (millis()-menuTime)/10;
     int c = cent%100;
     int s = (cent/100)%60;
     int m = cent/6000;
     
-    if (s<=9){
-    text(m+":0"+s+":",50,50);
-    }else{
-      text(m+":"+s+":",50,50);
+    if (s<=9) {
+      fill(250, 250, 250);
+      text(m+":0"+s+":", 101, 68);
+    } else {
+      fill(250, 250, 250);
+      text(m+":"+s+":", 100, 68);
     }
     
-    if (c<=9){
-      text("0"+c, 90,50);
-    }else{
-      text(c,90,50);
+    if (c <= 9){
+      fill(250,250,250);
+      text("0" + c, 140, 68);
     }
+    else {
+      fill(250,250,250);
+      text(c, 140, 68);
+    }
+
 
   image(Sun, 370, 50, 150, 150);
   image(Cloud, 200, 80, 150, 150);

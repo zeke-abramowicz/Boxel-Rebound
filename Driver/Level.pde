@@ -118,7 +118,7 @@ class Level { //test
         String[] arr2 = split(str2, ' ');
         float x = float(arr2[0]);
         float y = float(arr2[1]);
-        Finish block = new Finish(x, y);
+        Finish block = new Finish(x, y + Block.squareSize / 2);
         myLevel.add(block);
         size++;
       }
@@ -127,7 +127,7 @@ class Level { //test
         String[] arr2 = split(str2, ' ');
         float x = float(arr2[0]);
         float y = float(arr2[1]);
-        Spike block = new Spike(x, y);
+        Spike block = new Spike(x, y + Block.squareSize / 2);
         myLevel.add(block);
         size++;
       }
