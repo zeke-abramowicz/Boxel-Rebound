@@ -105,7 +105,7 @@ void keyPressed() {
     screen = 1;
     background(120, 140, 250);
     menuTime = millis();
-    josh = new Square(30, new PVector(45, 400), 12);
+    josh = new Square(30, new PVector(150, 400), 12);
   }
 
   if (key==ENTER && screen == 2) {

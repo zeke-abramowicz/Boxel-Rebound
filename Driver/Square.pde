@@ -137,14 +137,24 @@ class Square {
       Block sideBlock = currentLevel.get(j);
       float actualY1 = sideBlock.posY-sideBlock.getSquareSize()/2;
       float actualX1 = sideBlock.posX-sideBlock.getSquareSize()/2;
-      boolean xTouch = playerLocation.x+size>actualX1+12&&playerLocation.x<actualX1+sideBlock.getSquareSize();//12 is the forgiveness
+      boolean xTouch = playerLocation.x+size>actualX1&&playerLocation.x<actualX1+sideBlock.getSquareSize();//12 is the forgiveness
       boolean yAlign = playerLocation.y+size>actualY1&&playerLocation.y+size<=actualY1+sideBlock.getSquareSize();
       
-      if(xTouch&&yAlign){//hit side of block
-      screen=2;
+      if(xTouch&&yAlign&&sideBlock.bClass().equals("Basic")){//hit side of block
+      playerLocation.x+=-1;
+      }
+      if(xTouch&&yAlign&&sideBlock.bClass().equals("Spike")){//hit side of block
+      screen =2;
+      }
+      if(xTouch&&yAlign&&sideBlock.bClass().equals("Finish")){//hit side of block
+      screen =3;
+      setup();
+      }
+      if(playerLocation.y>height){//fall off map
+      screen = 2;
       }
       
-      if(playerLocation.y>height){//fall off map
+      if(playerLocation.x+size<=0){//hit left side
       screen = 2;
       }
     }
