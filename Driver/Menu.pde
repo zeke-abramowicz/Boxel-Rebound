@@ -1,3 +1,8 @@
+void background(){
+    fill(120, 140, 250);
+    
+    
+}
 class Menu {
   //ControlP5 cp5; //test
   Menu(){
@@ -30,6 +35,7 @@ class Menu {
         fill(250, 250, 250);
     rect(49, 69, 25, 4, 70);
   }
+  
     
   
   
