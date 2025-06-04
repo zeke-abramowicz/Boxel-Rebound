@@ -55,7 +55,8 @@ class Level { //test
   
   }
   void moveRight(){
-            background(120, 140, 250);
+    background(0, 0, 0);
+            Background();
     for (int i = size - 1; i >= 0; i--){
       //myLevel.get(i).deleteBlock();
       myLevel.get(i).posX += Block.squareSize;
@@ -64,7 +65,8 @@ class Level { //test
   }
   
   void moveLeft(){
-            background(120, 140, 250);
+    background(0, 0, 0);
+    Background();
     for (int i = 0; i < size; i++){
       //myLevel.get(i).deleteBlock();
       myLevel.get(i).posX -= Block.squareSize;
@@ -73,7 +75,7 @@ class Level { //test
   }
   
     void moveLeft(int x){
-            background(120, 140, 250);
+    Background();
     for (int i = 0; i < size; i++){
       //myLevel.get(i).deleteBlock();
       myLevel.get(i).posX -= x;

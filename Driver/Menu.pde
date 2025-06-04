@@ -1,8 +1,4 @@
-void background(){
-    fill(120, 140, 250);
-    
-    
-}
+
 class Menu {
   //ControlP5 cp5; //test
   Menu(){
