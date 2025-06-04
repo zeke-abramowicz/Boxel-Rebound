@@ -39,6 +39,12 @@ class Level { //test
           size--;
         }
       }
+      if (key == '6'){
+        myLevel.add(new Cloud(mouseX, mouseY));
+        size++;
+        myLevel.get(size - 1).createBlock();
+      }
+
     }
 
   }
@@ -130,6 +136,15 @@ class Level { //test
         float x = float(arr2[0]);
         float y = float(arr2[1]);
         Spike block = new Spike(x, y + Block.squareSize / 2);
+        myLevel.add(block);
+        size++;
+      }
+      else if (newStr.substring(0, 1).equals("5")){
+        String str2 = newStr.substring(2);
+        String[] arr2 = split(str2, ' ');
+        float x = float(arr2[0]);
+        float y = float(arr2[1]);
+        Block block = new Cloud(x, y);
         myLevel.add(block);
         size++;
       }

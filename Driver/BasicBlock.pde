@@ -4,7 +4,7 @@ class BasicBlock extends Block {
   }
   //fix everything up w this class
   void createBlock(){
-    stroke(0);
+    noStroke();
     fill(250, 250, 250);
     //rect(posX, posY, getSquareSize(), getSquareSize());
     rect(posX-getSquareSize()/2, posY-getSquareSize()/2, getSquareSize(), getSquareSize());
@@ -12,12 +12,11 @@ class BasicBlock extends Block {
   
   void deleteBlock(){
     for (float i = posY; i < posY + getSquareSize(); i++){
-      
-    fill(120, 140 + (height / 15), 250 - (height / 15));
-    noStroke();
-    rect(0, i, width, 1);
+      fill(120, 140 + (i / 15), 250 - (i / 15));
+      noStroke();
+      rect(0, i, getSquareSize(), 1);
     }
-    stroke(120, 140, 250);
+    noStroke();
     rect(posX-getSquareSize()/2, posY-getSquareSize()/2, getSquareSize(), getSquareSize());
   }
   

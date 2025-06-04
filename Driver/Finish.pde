@@ -34,9 +34,14 @@ class Finish extends Block{
   }
   
   void deleteBlock(){
-    fill(120, 140, 250);
-    stroke(120, 140, 250);
-    rect(posX - getSquareSize() / 2, posY - getSquareSize() / 2, getSquareSize(), getSquareSize());
+        for (float i = posY; i < posY + getSquareSize(); i++){
+      fill(120, 140 + (i / 15), 250 - (i / 15));
+      noStroke();
+      rect(0, i, getSquareSize(), 1);
+    }
+    noStroke();
+    rect(posX-getSquareSize()/2, posY-getSquareSize()/2, getSquareSize(), getSquareSize());
+
   }
   
   String toString(){
