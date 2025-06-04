@@ -85,7 +85,6 @@ void draw() {
   josh.squareHere(levels.getLevel());
   thisMenu = new Menu();
 
-  
   }
   
   if(screen==2){
