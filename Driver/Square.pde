@@ -18,8 +18,12 @@ class Square {
   }
 
   public void move() {
-    fill(120, 140, 250);
-    stroke(120, 140, 250);
+    for (float i = playerLocation.x; i < playerLocation.y + size; i++){
+      fill(120, 140 + (i / 15), 250 - (i / 15));
+      noStroke();
+      rect(playerLocation.x, i, size, 1);
+    }
+    noStroke();
     rect(playerLocation.x, playerLocation.y, size, size);
     applyForce(gravity);
     velocity.add(acceleration);
@@ -90,6 +94,8 @@ class Square {
           touchingGround = true;
           if (screen != 6) screen = 2;
         }
+        if (currBlock.bClass().equals("Cloud")){
+        }
       }
     }
     
@@ -100,7 +106,7 @@ class Square {
       boolean xTouch = playerLocation.x+size>actualX1+12&&playerLocation.x<actualX1+sideBlock.getSquareSize();//12 is the forgiveness
       boolean yAlign = playerLocation.y+size>actualY1&&playerLocation.y+size<=actualY1+sideBlock.getSquareSize();
       
-      if(xTouch&&yAlign){//hit side of block
+      if(xTouch&&yAlign && !(sideBlock.bClass().equals("Cloud"))){//hit side of block
       screen=7;
       }
       

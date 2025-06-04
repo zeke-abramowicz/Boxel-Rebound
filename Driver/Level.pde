@@ -80,7 +80,7 @@ class Level { //test
     }
   }
   
-    void moveLeft(int x){
+    void moveLeft(float x){
     Background();
     for (int i = 0; i < size; i++){
       //myLevel.get(i).deleteBlock();

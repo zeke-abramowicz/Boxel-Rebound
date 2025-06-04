@@ -4,10 +4,10 @@ class Cloud extends Block{
   }
   
   void createBlock(){
-    fill(120);
+    fill(200);
     noStroke();
     rect(posX, posY, 20, 20);
-    fill(120);
+    fill(200);
     noStroke();
     rect(posX + 15, posY + 5, 20, 20);
   }
@@ -32,7 +32,7 @@ class Cloud extends Block{
   }
   
   String bClass(){
-    return "";
+    return "Cloud";
   }
   
   //add in a toString and few other things to make this class work with the rest of the game. Once that is done, work on debugging and fixing up any issues.
