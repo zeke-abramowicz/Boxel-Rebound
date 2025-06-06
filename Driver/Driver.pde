@@ -8,6 +8,8 @@ Square josh;
 int menuTime;
 PImage Sun, Cloud;
 int screen;
+boolean finished;
+float speed;
 
 void setup() {
   background(120, 140, 250);
@@ -17,6 +19,8 @@ void setup() {
   Cloud = loadImage("Cloud.png");
   screen = 0;
   levels.createLevel();
+  finished = false;
+  speed = 5;
 }
 
 
@@ -49,7 +53,6 @@ void draw() {
     text("Edit Mode",210,526.5);
   }
   if(screen==1){
-    levels.runLevel();    
     thisMenu = new Menu();
     noStroke();
     fill(120, 140, 250);
@@ -79,12 +82,19 @@ void draw() {
       fill(250,250,250);
       text(c, 140, 68);
     }
+      if (finished == false) levels.runLevel(speed);
+    else{
+      if (frameCount % 1 == 0){
+        speed -= 0.0000000001;
+    }
+      levels.runLevel(speed);
+    }
 
   rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
   josh.move();  
   josh.squareHere(levels.getLevel());
   thisMenu = new Menu();
-
+  
   }
   
   if(screen==2){
@@ -222,7 +232,7 @@ void mouseClicked(){
     screen = 1;
     Background();
     menuTime = millis();
-    josh = new Square(30, new PVector(45,150),12);
+    josh = new Square(30, new PVector(45,150),20);
     //levels.editMode = false;
     //levels.runMode = true;
   }
@@ -243,23 +253,27 @@ void mouseClicked(){
           screen = 6;
     Background();
         menuTime = millis();
-        josh = new Square(30, new PVector(45,150),12);
+        josh = new Square(30, new PVector(45,150),20);
 
     }
   }
   if (screen == 2 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     levels.nextLevel();
+    finished = false;
+    speed = 5;
         screen = 1;
     Background();
             menuTime = millis();
-        josh = new Square(30, new PVector(45,150),12);
+        josh = new Square(30, new PVector(45,150),20);
   }
   if (screen == 7 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     levels.reset();
+    speed = 5;
+
     screen = 1;
     Background();
     menuTime = millis();
-    josh = new Square(30, new PVector(45,150),12);
+    josh = new Square(30, new PVector(45,150),20);
   }
 }
 

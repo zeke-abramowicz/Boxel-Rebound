@@ -50,12 +50,12 @@ class LevelList {
   
   
   
-  void runLevel() {
+  void runLevel(float x) {
     Level tester = levelList[currentLevel];
     
     if (tester.getSize() > 0){
     if (frameCount % 1 == 0){
-       tester.moveLeft(7/2); //change speed here
+       tester.moveLeft(x); //change speed here
 
 
   }

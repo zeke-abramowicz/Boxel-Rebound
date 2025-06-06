@@ -6,7 +6,7 @@ class Square {
   PImage joshy;
   float rotat = 0;
 
-  PVector gravity = new PVector (0.0, 0.5);
+  PVector gravity = new PVector (0.0, 1.0);
 
   public Square(int size, PVector location, int jump) {
     joshy = loadImage("Face.png");
@@ -35,17 +35,23 @@ class Square {
   
     
     if(!touchingGround){
-    fill(120, 140, 250);
+    for (float i = playerLocation.x; i < playerLocation.y + size; i++){
+      fill(120, 140 + (i / 15), 250 - (i / 15));
+      noStroke();
+      rect(playerLocation.x, i, size, 1);
+    }
+    pushMatrix();
     translate(playerLocation.x+size/2, playerLocation.y+size/2);
-    rotate(rotat); 
+    rotate(rotat);
     rect(-15,-15, 30, 30);
     image(joshy, -15, -15, size, size);
-    rotat +=0.1;
+    rotat +=0.05;
     //translate(playerLocation.x+size/2, playerLocation.y+size/2);
     rotate(rotat); 
     fill(255);
     rect(-15,-15, 30, 30);
     image(joshy, -15, -15, size, size);
+    popMatrix();
     }
     else{
     fill(255);
@@ -104,14 +110,17 @@ class Square {
         }
 
         if (currBlock.bClass().equals("Finish")) {
+          finished = true;
           //delay(500);
           textSize(50);
           fill(255);
-          velocity.y=0;
-          acceleration.y = 0;
-          playerLocation = new PVector (playerLocation.x, actualY-size);
-          touchingGround = true;
-          if (screen != 6) screen = 2;
+          //PVector slow = new PVector(-0.5, 0.0);
+          //if (velocity.x != 0) applyForce(slow);
+          //playerLocation = new PVector (playerLocation.x, actualY-size);
+          //touchingGround = true;
+          if (screen != 6){
+            if (speed == 0) screen = 2;
+          }
         }
         if (currBlock.bClass().equals("Cloud")){
         }
