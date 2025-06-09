@@ -39,7 +39,7 @@ class Level { //test
           size--;
         }
       }
-      if (key == '6'){
+      if (key == '6' && mouseY <= height / 2 - 40){
         myLevel.add(new Cloud(mouseX, mouseY));
         size++;
         myLevel.get(size - 1).createBlock();

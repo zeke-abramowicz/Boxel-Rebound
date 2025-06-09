@@ -9,6 +9,7 @@ class Square {
   PVector gravity = new PVector (0.0, 1.0);
 
   public Square(int size, PVector location, int jump) {
+    noStroke();
     joshy = loadImage("Face.png");
     touchingGround=true;
     velocity = new PVector(0.0, 0.0);
@@ -24,7 +25,8 @@ class Square {
       noStroke();
       rect(playerLocation.x, i, size, 1);
     }
-    noStroke();
+    //noStroke();
+    stroke(240, 30, 220);
     rect(playerLocation.x, playerLocation.y, size, size);
     
     applyForce(gravity);
@@ -35,14 +37,18 @@ class Square {
   
     
     if(!touchingGround){
+    // Issue with clouds going under background
     for (float i = playerLocation.x; i < playerLocation.y + size; i++){
       fill(120, 140 + (i / 15), 250 - (i / 15));
       noStroke();
       rect(playerLocation.x, i, size, 1);
     }
+    
     pushMatrix();
     translate(playerLocation.x+size/2, playerLocation.y+size/2);
     rotate(rotat);
+    noStroke();
+    //issue with a stroke under the square
     rect(-15,-15, 30, 30);
     image(joshy, -15, -15, size, size);
     rotat +=0.05;
@@ -55,6 +61,7 @@ class Square {
     }
     else{
     fill(255);
+    //noStroke();
     stroke(255);
     rect(playerLocation.x, playerLocation.y, size, size);
     image(joshy, playerLocation.x, playerLocation.y, size, size);

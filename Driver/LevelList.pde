@@ -51,6 +51,7 @@ class LevelList {
   
   
   void runLevel(float x) {
+    //Background();
     Level tester = levelList[currentLevel];
     
     if (tester.getSize() > 0){

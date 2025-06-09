@@ -82,13 +82,16 @@ void draw() {
       fill(250,250,250);
       text(c, 140, 68);
     }
+    /*
       if (finished == false) levels.runLevel(speed);
     else{
       if (frameCount % 1 == 0){
         speed -= 0.0000000001;
     }
+    */
       levels.runLevel(speed);
-    }
+    //}
+    
 
   rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
   josh.move();  
@@ -232,7 +235,7 @@ void mouseClicked(){
     screen = 1;
     Background();
     menuTime = millis();
-    josh = new Square(30, new PVector(45,150),20);
+    josh = new Square(30, new PVector(45,500),20);
     //levels.editMode = false;
     //levels.runMode = true;
   }
