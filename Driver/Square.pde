@@ -22,8 +22,8 @@ class Square {
   public void move() {
     for (float i = playerLocation.x; i < playerLocation.y + size; i++){
       fill(120, 140 + (i / 15), 250 - (i / 15));
-      noStroke();
-      rect(playerLocation.x, i, size, 1);
+      stroke(120, 140 + (i / 15), 250 - (i / 15));
+      rect(playerLocation.x, i, size + 1, 1);
     }
     //noStroke();
     stroke(240, 30, 220);
@@ -38,9 +38,9 @@ class Square {
     
     if(!touchingGround){
     // Issue with clouds going under background
-    for (float i = playerLocation.x; i < playerLocation.y + size; i++){
+    for (float i = playerLocation.y; i < playerLocation.y + size; i++){
       fill(120, 140 + (i / 15), 250 - (i / 15));
-      noStroke();
+      //stroke(120, 140 + (i / 15), 250 - (i / 15));
       rect(playerLocation.x, i, size, 1);
     }
     
