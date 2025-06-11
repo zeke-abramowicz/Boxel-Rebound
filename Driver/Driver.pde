@@ -91,7 +91,7 @@ void draw() {
 
   rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
   josh.move();  
-  josh.squareHere(levels.getLevel());
+      josh.squareHere(levels.getLevel());
   thisMenu = new Menu();
   
   }
@@ -196,8 +196,9 @@ void draw() {
 
 
   rect(josh.getLocation().x,josh.getLocation().y,josh.size,josh.size);
-  josh.move();  
-  josh.squareHere(levels.test);
+
+  josh.move(); 
+    josh.squareHere(levels.test);
   thisMenu = new Menu();
 
   
@@ -243,6 +244,8 @@ void mouseClicked(){
   if (screen == 5 && mouseX >= 60 && mouseX <= 440 && mouseY >= 500 && mouseY <= 540){
     screen = 3;
     Background();
+            levels.test.moveRight(levels.counter);
+        levels.counter = 0;
     for (int i = 0; i < levels.test.getSize(); i++){
       levels.test.getLevel().get(i).createBlock();
     }
@@ -251,7 +254,7 @@ void mouseClicked(){
     if (levels.test.getSize() > 0){
          Background();
         menuTime = millis();
-        josh = new Square(30, new PVector(45,150),20);
+        josh = new Square(30, new PVector(45,500),20);
         levels.test.moveRight(levels.counter);
         levels.counter = 0;
         screen = 6;
@@ -276,10 +279,10 @@ void mouseClicked(){
     levels.reset();
     speed = 5;
 
-    screen = 1;
     Background();
     menuTime = millis();
-    josh = new Square(30, new PVector(45,150),20);
+    josh = new Square(30, new PVector(45,500),20);
+        screen = 1;
   }
 }
 
