@@ -1,7 +1,7 @@
 /*
 First work on creating a better background that looks more like the game. Then work on fixing a few bugs with the menu and stuff, but those things can also be worked on later throughout the week.
 */
-import processing.sound.SoundFile;
+import processing.sound.*;
 import java.util.Arrays;
 LevelList levels = new LevelList();
 int currentLevel;

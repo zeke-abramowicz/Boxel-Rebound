@@ -130,6 +130,8 @@ class Square {
           //playerLocation = new PVector (playerLocation.x, actualY-size);
           //touchingGround = true;
           if (levels.currentLevel == 3){
+                        levels.currentLevel = 0;
+                        levels.reset();
             screen = 0;
             return;
           }
