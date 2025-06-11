@@ -1,6 +1,7 @@
 /*
 First work on creating a better background that looks more like the game. Then work on fixing a few bugs with the menu and stuff, but those things can also be worked on later throughout the week.
 */
+import processing.sound.SoundFile;
 import java.util.Arrays;
 LevelList levels = new LevelList();
 int currentLevel;
@@ -10,6 +11,7 @@ PImage Sun, Cloud;
 int screen;
 boolean finished;
 float speed;
+SoundFile music, death;
 
 void setup() {
   background(120, 140, 250);
@@ -21,6 +23,10 @@ void setup() {
   levels.createLevel();
   finished = false;
   speed = 5;
+  //sound effects
+  music = new SoundFile(this, "gamemusic.mp3");
+  music.loop();
+  death = new SoundFile(this, "wompwomp.mp3");
 }
 
 
@@ -231,7 +237,7 @@ void mouseClicked(){
    if((screen == 0 || screen == 4) && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
          Background();
     menuTime = millis();
-    josh = new Square(30, new PVector(45,500),20);
+    josh = new Square(30, new PVector(120,500),20);
         screen = 1;
     //levels.editMode = false;
     //levels.runMode = true;
@@ -254,7 +260,7 @@ void mouseClicked(){
     if (levels.test.getSize() > 0){
          Background();
         menuTime = millis();
-        josh = new Square(30, new PVector(45,500),20);
+        josh = new Square(30, new PVector(120,500),20);
         levels.test.moveRight(levels.counter);
         levels.counter = 0;
         screen = 6;
@@ -271,7 +277,7 @@ void mouseClicked(){
             menuTime = millis();
             
         //josh = new Square(30, new PVector(45,150),20);
-        josh = new Square(30, new PVector(45,500),20);
+        josh = new Square(30, new PVector(120,500),20);
                 screen = 1;
 
   }
@@ -281,7 +287,7 @@ void mouseClicked(){
 
     Background();
     menuTime = millis();
-    josh = new Square(30, new PVector(45,500),20);
+    josh = new Square(30, new PVector(120,500),20);
         screen = 1;
   }
 }

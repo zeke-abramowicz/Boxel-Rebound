@@ -109,8 +109,14 @@ class Square {
         }
         else if (currBlock.bClass().equals("Spike")) {
           // System.out.println("Touching spike block");
-          if (screen != 6) screen=7;
-          else screen = 4;
+          if (screen != 6) {
+            death.play(1.4);
+            screen=7;
+          }
+          else {
+            screen = 4;
+            death.play(1.4);
+          }
           velocity.y = 0;
           return;
         }
@@ -123,7 +129,7 @@ class Square {
           //if (velocity.x != 0) applyForce(slow);
           //playerLocation = new PVector (playerLocation.x, actualY-size);
           //touchingGround = true;
-          if (levels.currentLevel == 2){
+          if (levels.currentLevel == 3){
             screen = 0;
             return;
           }
@@ -146,37 +152,57 @@ class Square {
       boolean yAlign = playerLocation.y+size>actualY1&&playerLocation.y+size<=actualY1+sideBlock.getSquareSize();
       
 
-      if(xTouch&&yAlign && !(sideBlock.bClass().equals("Cloud") || sideBlock.bClass().equals("Basic"))){//hit side of block
-          if (screen != 6) screen=7;
-          else screen = 5;
+      if(xTouch&&yAlign && !(sideBlock.bClass().equals("Cloud") || sideBlock.bClass().equals("Basic") || sideBlock.bClass().equals("Finish"))){//hit side of block
+          if (screen != 6) {
+            screen=7;
+            death.play(1.4);
+          }
+          else 
+          {
+            screen = 5;
+            death.play(1.4);
+          }
           return;
       }
       if(playerLocation.y>height){//fall off map
-          if (screen != 6) screen=7;
-          else screen = 5;
+          if (screen != 6) {
+            screen=7;
+            death.play(1.4);
+          }
+          else 
+          {
+            screen = 5;
+            death.play(1.4);}
           return;
       }
+      
       if(xTouch&&yAlign&&sideBlock.bClass().equals("Basic")){//hit side of block
-      velocity.x = -1 * speed;
-      playerLocation.x+=-1;
+      playerLocation.x+=-speed-0.75;
       }
       if(xTouch&&yAlign&&sideBlock.bClass().equals("Spike")){//hit side of block
-          if (screen != 6) screen=7;
-          else screen = 5;
+          if (screen != 6) {
+            death.play(1.4);
+            screen=7;
+          }
+          else {
+            death.play(1.4);
+            screen = 5;
+          }
           return;
       }
       if(xTouch&&yAlign&&sideBlock.bClass().equals("Finish")){//hit side of block
-      velocity.x = -1 * speed;
-      playerLocation.x+=-1;
+      playerLocation.x+=-speed-0.75;
       }
-      if(playerLocation.y>height){//fall off map
-          if (screen != 6) screen=7;
-          else screen = 5;
-          return;
-      }
+ 
       if(playerLocation.x+size<=0){//hit left side
-          if (screen != 6) screen=7;
-          else screen = 5;
+          if (screen != 6) {
+          death.play(1.4);
+          screen=7;
+          }
+          else {
+            screen = 5;
+            death.play(1.4);
+          }
           return;
       }
     }
