@@ -54,6 +54,7 @@ void draw() {
   }
   if(screen==1){
     thisMenu = new Menu();
+    levels.runLevel(speed);
     noStroke();
     fill(120, 140, 250);
     rect(47, 32, 75, 25);
@@ -82,14 +83,9 @@ void draw() {
       fill(250,250,250);
       text(c, 140, 68);
     }
-    /*
-      if (finished == false) levels.runLevel(speed);
-    else{
-      if (frameCount % 1 == 0){
-        speed -= 0.0000000001;
-    }
-    */
-      levels.runLevel(speed);
+    
+
+    
     //}
     
 
@@ -103,7 +99,7 @@ void draw() {
   if(screen==2){
     background(180, 65, 180);
     textSize(50);
-    text("Edit Mode", 155, 140);
+    text("Level Finished", 106, 140);
     textSize(20);
     fill(60);
     if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
@@ -111,7 +107,6 @@ void draw() {
     rect(60, 380, 380, 40);
     fill(255);
     text("Play Next Level",186,407);
-    
   }
   if (screen == 3){
     //edit mode screen
@@ -165,6 +160,7 @@ void draw() {
     text("Resume Editing",195,526.5);
   }
   if (screen == 6) {
+    text("screen 6", 100, 150);
     thisMenu = new Menu();
     levels.runTest();    
 
@@ -209,7 +205,7 @@ void draw() {
    if(screen==7){
     background(180, 65, 180);
     textSize(50);
-    text("Edit Mode", 135, 140);
+    text("Level Failed", 135, 140);
     textSize(20);
     fill(60);
     if (mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420) fill(0);
@@ -232,10 +228,10 @@ void keyPressed() {
 
 void mouseClicked(){
    if((screen == 0 || screen == 4) && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
-    screen = 1;
-    Background();
+         Background();
     menuTime = millis();
     josh = new Square(30, new PVector(45,500),20);
+        screen = 1;
     //levels.editMode = false;
     //levels.runMode = true;
   }
@@ -253,21 +249,28 @@ void mouseClicked(){
   }
   if (screen == 5 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     if (levels.test.getSize() > 0){
-          screen = 6;
-    Background();
+         Background();
         menuTime = millis();
         josh = new Square(30, new PVector(45,150),20);
+        levels.test.moveRight(levels.counter);
+        levels.counter = 0;
+        screen = 6;
+
 
     }
   }
   if (screen == 2 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
+    
     levels.nextLevel();
-    finished = false;
+    //finished = false;
     speed = 5;
-        screen = 1;
     Background();
             menuTime = millis();
-        josh = new Square(30, new PVector(45,150),20);
+            
+        //josh = new Square(30, new PVector(45,150),20);
+        josh = new Square(30, new PVector(45,500),20);
+                screen = 1;
+
   }
   if (screen == 7 && mouseX >= 60 && mouseX <= 440 && mouseY >= 380 && mouseY <= 420){
     levels.reset();

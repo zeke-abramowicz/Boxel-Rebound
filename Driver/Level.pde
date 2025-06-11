@@ -15,6 +15,11 @@ class Level { //test
     createLevel(str);
   }
   
+  Level(ArrayList<Block> myLevel){
+    this.myLevel = myLevel;
+    size = myLevel.size();
+  }
+  
   void addBlock(){
     if (keyPressed){
       if (key == '1'){
@@ -69,6 +74,15 @@ class Level { //test
       myLevel.get(i).createBlock();
     }
   }
+   void moveRight(float x){
+    background(0, 0, 0);
+            Background();
+    for (int i = size - 1; i >= 0; i--){
+      //myLevel.get(i).deleteBlock();
+      myLevel.get(i).posX += x;
+      myLevel.get(i).createBlock();
+    }
+  }
   
   void moveLeft(){
     background(0, 0, 0);
@@ -103,7 +117,7 @@ class Level { //test
       str += myLevel.get(i).toString();
       str += "|";
     }
-    return str;
+    return str.substring(0, str.length() - 1);
   }
   
   
@@ -116,7 +130,6 @@ class Level { //test
         String[] arr2 = split(str2, ' ');
         float x = float(arr2[0]);
         float y = float(arr2[1]);
-        println(float(arr2[1]));
         BasicBlock block = new BasicBlock(x + Block.squareSize / 2, y + Block.squareSize / 2);
         myLevel.add(block);
         size++;

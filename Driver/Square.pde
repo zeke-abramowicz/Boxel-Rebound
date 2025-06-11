@@ -1,12 +1,12 @@
 class Square {
-  int size;
-  int jumpPower;
-  PVector playerLocation, velocity, acceleration;
-  boolean touchingGround;
-  PImage joshy;
-  float rotat = 0;
+  private int size;
+  private int jumpPower;
+  private PVector playerLocation, velocity, acceleration;
+  private boolean touchingGround;
+  private PImage joshy;
+  private float rotat = 0;
 
-  PVector gravity = new PVector (0.0, 1.0);
+  private PVector gravity = new PVector (0.0, 1.0);
 
   public Square(int size, PVector location, int jump) {
     noStroke();
@@ -20,13 +20,13 @@ class Square {
   }
 
   public void move() {
-    for (float i = playerLocation.x; i < playerLocation.y + size; i++){
+    for (float i = playerLocation.y; i < playerLocation.y + size; i++){
       fill(120, 140 + (i / 15), 250 - (i / 15));
       stroke(120, 140 + (i / 15), 250 - (i / 15));
-      rect(playerLocation.x, i, size + 1, 1);
-    }
+      rect(playerLocation.x, i, size, 1);
+    }    
     //noStroke();
-    stroke(240, 30, 220);
+    //stroke(240, 30, 220);
     rect(playerLocation.x, playerLocation.y, size, size);
     
     applyForce(gravity);
@@ -40,10 +40,9 @@ class Square {
     // Issue with clouds going under background
     for (float i = playerLocation.y; i < playerLocation.y + size; i++){
       fill(120, 140 + (i / 15), 250 - (i / 15));
-      //stroke(120, 140 + (i / 15), 250 - (i / 15));
+      stroke(120, 140 + (i / 15), 250 - (i / 15));
       rect(playerLocation.x, i, size, 1);
-    }
-    
+    }    
     pushMatrix();
     translate(playerLocation.x+size/2, playerLocation.y+size/2);
     rotate(rotat);
@@ -90,6 +89,7 @@ class Square {
     playerLocation = newP;
   }
   void squareHere(Level curLev) {
+    //if (screen == 2 || screen == 4 || screen == 5 || screen == 7) return;
     ArrayList<Block> currentLevel = curLev.getLevel();
 
     for (int i =0; i< currentLevel.size(); i++) {
@@ -107,17 +107,15 @@ class Square {
           playerLocation = new PVector (playerLocation.x, actualY - size);
           touchingGround = true;
         }
-
-        if (currBlock.bClass().equals("Spike")) {
+        else if (currBlock.bClass().equals("Spike")) {
           // System.out.println("Touching spike block");
-          screen=7;
+          if (screen != 6) screen=7;
+          else screen = 4;
           velocity.y = 0;
-          playerLocation = new PVector (playerLocation.x, actualY - size);
-          touchingGround = true;
+          return;
         }
-
-        if (currBlock.bClass().equals("Finish")) {
-          finished = true;
+        else if (currBlock.bClass().equals("Finish")) {
+          //finished = true;
           //delay(500);
           textSize(50);
           fill(255);
@@ -125,11 +123,17 @@ class Square {
           //if (velocity.x != 0) applyForce(slow);
           //playerLocation = new PVector (playerLocation.x, actualY-size);
           //touchingGround = true;
-          if (screen != 6){
-            if (speed == 0) screen = 2;
+          if (levels.currentLevel == 2){
+            screen = 0;
+            return;
           }
+          if (screen != 6){
+            screen = 2;
+          }
+          else screen = 4;
+          return;
         }
-        if (currBlock.bClass().equals("Cloud")){
+        else if (currBlock.bClass().equals("Cloud")){
         }
       }
     }
@@ -141,31 +145,42 @@ class Square {
       boolean xTouch = playerLocation.x+size>actualX1&&playerLocation.x<actualX1+sideBlock.getSquareSize();//12 is the forgiveness
       boolean yAlign = playerLocation.y+size>actualY1&&playerLocation.y+size<=actualY1+sideBlock.getSquareSize();
       
-      if(xTouch&&yAlign && !(sideBlock.bClass().equals("Cloud"))){//hit side of block
-      screen=7;
+
+      if(xTouch&&yAlign && !(sideBlock.bClass().equals("Cloud") || sideBlock.bClass().equals("Basic"))){//hit side of block
+          if (screen != 6) screen=7;
+          else screen = 5;
+          return;
       }
       if(playerLocation.y>height){//fall off map
-      screen = 7;
+          if (screen != 6) screen=7;
+          else screen = 5;
+          return;
+      }
       if(xTouch&&yAlign&&sideBlock.bClass().equals("Basic")){//hit side of block
+      velocity.x = -1 * speed;
       playerLocation.x+=-1;
       }
       if(xTouch&&yAlign&&sideBlock.bClass().equals("Spike")){//hit side of block
-      screen =7;
+          if (screen != 6) screen=7;
+          else screen = 5;
+          return;
       }
       if(xTouch&&yAlign&&sideBlock.bClass().equals("Finish")){//hit side of block
-      screen =3;
-      setup();
+      velocity.x = -1 * speed;
+      playerLocation.x+=-1;
       }
       if(playerLocation.y>height){//fall off map
-      screen = 7;
+          if (screen != 6) screen=7;
+          else screen = 5;
+          return;
       }
-      
       if(playerLocation.x+size<=0){//hit left side
-      screen = 7;
+          if (screen != 6) screen=7;
+          else screen = 5;
+          return;
       }
     }
     
     
   }
   }
-}
